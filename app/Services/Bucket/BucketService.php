@@ -97,7 +97,7 @@ class BucketService
     private function validateResource(string $resource): void
     {
         $validator = \Validator::make(compact("resource"), [
-            "resource" => "required|url|unique:files,resource"
+            "resource" => "required|url|max:300|unique:files,resource"
         ], [
             "required" => "Resource link is required",
             "url" => "Resource link has to be a valid url",
