@@ -57,8 +57,8 @@ class BucketList extends Command
         foreach ($files as $num => $file) {
             $content[] = [
                 $num + 1,
-                $full ? $file["name"] : $this->cutStr($file["name"], 20),
-                $full ? $file["resource"] : $this->cutStr($file["resource"]),
+                $full ? $file["name"] : $this->shorter($file["name"], 20),
+                $full ? $file["resource"] : $this->shorter($file["resource"]),
                 $file["downloadable"] ? route("short_link", ["hash" => $file["hash"]]) : "",
                 $file["status"],
             ];
@@ -78,7 +78,7 @@ class BucketList extends Command
      *
      * @return string
      */
-    private function cutStr(string $link, int $length = 30): string
+    private function shorter(string $link, int $length = 30): string
     {
         $strlen = strlen($link);
 
